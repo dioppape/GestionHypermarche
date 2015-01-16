@@ -1,14 +1,13 @@
-
 package fr.controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-/** Example resource class hosted at the URI path "/myresource"
+/** Example resource class hosted at the URI path "/admin"
  */
-@Path("/myresource")
-public class MyResource {
+@Path("/admin")
+public class Serveur{
     
     /** Method processing HTTP GET requests, producing "text/plain" MIME media
      * type.
@@ -16,7 +15,7 @@ public class MyResource {
      */
     @GET 
     @Produces("text/plain")
-    public String getIt() {
-        return "Hi there!";
+    public String getAdmin() {
+        return "Bienvenue chez Admin!";
     }
 }
