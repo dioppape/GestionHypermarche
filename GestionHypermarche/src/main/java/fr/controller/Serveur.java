@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 /** Example resource class hosted at the URI path "/admin"
  */
 @Path("/admin")
-public class Serveur {
+public class Serveur{
     
     /** Method processing HTTP GET requests, producing "text/plain" MIME media
      * type.
@@ -15,7 +15,7 @@ public class Serveur {
      */
     @GET 
     @Produces("text/plain")
-    public String getIt() {
+    public String getAdmin() {
         return "Bienvenue chez Admin!";
     }
 }
