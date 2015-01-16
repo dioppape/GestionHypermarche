@@ -1,4 +1,3 @@
-
 package fr.controller;
 
 import javax.ws.rs.GET;
