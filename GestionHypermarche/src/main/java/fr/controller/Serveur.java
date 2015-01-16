@@ -17,6 +17,6 @@ public class Serveur {
     @GET 
     @Produces("text/plain")
     public String getIt() {
-        return "Bienvenue chez admin!";
+        return "Bienvenue chez Admin!";
     }
 }
