@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="utilisateur" xmlns="utilisateur"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"  >
+<xs:import namespace="lignedeutilisateur"/>
+	<xs:element  name="utilisateurs" >
+	    <xs:complexType>
+    <xs:sequence>
+	<xs:element name="utilisateur" type="utilisateur"  minOccurs="1"  maxOccurs="unbounded"/>	
+	</xs:sequence>
+	</xs:complexType>
+	</xs:element>	
+	<xs:complexType name="utilisateur">
+			<xs:sequence>
+				<xs:element name="id" type="xs:ID" nillable="false" />
+				<xs:element name="nom" type="xs:string" nillable="false"/>
+				<xs:element name="prenom" type="xs:string" nillable="false"/>
+				<xs:element name="email" type="xs:string" nillable="false" />
+				<xs:element name="pwd" type="xs:string" nillable="false"/>
+				<xs:element name="tel" type="xs:string" />
+				<xs:element name="adresse" type="xs:string" />
+				<xs:element name="ville" type="xs:string" />
+				<xs:element name="codepostale" type="xs:string" />
+				<xs:element name="pays" type="xs:string" />
+				<xs:element name="role" type="role" minOccurs="1" maxOccurs="unbounded"/>
+				
+			</xs:sequence>
+		</xs:complexType>
+		<xs:complexType name="role">
+			<xs:sequence>
+				<xs:element name="id" type="xs:ID" nillable="false" />
+				<xs:element name="nom" type="xs:string" nillable="false" />
+				
+			</xs:sequence>
+		</xs:complexType>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="article" xmlns="article"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:Alias1="categorie"
+	xmlns:Alias3="utilisateur">
+	<xs:import namespace="utilisateur" schemaLocation="utilisateur.xsd"/>
+	<xs:import namespace="categorie" schemaLocation="categorie.xsd"/>
+	<xs:element name="articles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="article" type="article" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="article">
+		<xs:sequence>
+			<xs:element name="codebar" type="xs:ID" nillable="false"/>
+			<xs:element name="libelle" type="xs:string" nillable="false"/>
+			<xs:element name="prixachat" type="xs:string" />
+			<xs:element name="prixvente" type="xs:string" />
+			<xs:element name="quantite" type="xs:string" />
+			<xs:element name="categorie" type="Alias1:categorie" nillable="true" />
+			<xs:element name="utilisateur" type="Alias3:utilisateur" nillable="true" />
+			
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

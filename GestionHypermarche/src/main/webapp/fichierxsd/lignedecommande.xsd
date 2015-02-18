@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="lignedecommande" xmlns="lignedecommande"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Alias1="urn:schemas-microsoft-com:datatypes"
+	xmlns:Alias2="commande">
+	<xs:import namespace="commande" schemaLocation="commande.xsd" />
+	<xs:element name="lignedecommandes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="lignedecommande" type="lignedecommande" minOccurs="1"  maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="lignedecommande">
+		<xs:sequence>
+			<xs:element name="id" type="xs:ID" nillable="false"/>
+			<xs:element name="libelle" type="xs:string" />
+			<xs:element name="quantite" type="xs:string" />
+			<xs:element name="date" type="xs:string" />
+			<xs:element name="commande" type="Alias2:commande" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

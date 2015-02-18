@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="../index.xhtml">
+      
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content">
+		 <ui:insert name="menu" >
+					<ui:include src="/view/menu.xhtml">
+					</ui:include>
+	     </ui:insert>
+			<p:growl id="messages" />
+
+			<p:outputPanel id="rayons">
+				<p:dataTable id="rayonTable" var="listrayon"
+					value="#{rayonController.lrayon}" width="300" border="1">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet>
+						<h:outputText value="#{listrayon.id}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{listrayon.nom}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Localisation" />
+						</f:facet>
+						<h:outputText value="#{listrayon.localisation}" />
+					</p:column>
+				  <p:column>
+						<f:facet name="header">
+							<h:outputText value="Chef de rayon" />
+						</f:facet>
+						<h:outputText value="#{listrayon.utilisateur.id}" />
+					</p:column>
+				
+					<p:column>
+					
+						<f:facet name="header">
+							<h:outputText value="Opération" />
+						</f:facet>
+						<h:form>
+							<p:commandButton value="Modifier"
+								action="#{rayonController.setRayon(listrayon)}"
+								update=":addRayonForm" />
+							<p:commandButton value="Supprimer"
+								action="#{rayonController.deleteRayon(listrayon)}"
+								update=":rayonTable, :messages" />
+							<!--<p:confirm header="Confirmation"   message="Voulez vous vraiment supprimer" icon="ui-icon-alert"/> -->
+						<p:commandButton value="Detailles"
+								action="#{categorieController.loadCategorie(listrayon)}"
+								update=":messages" />
+							
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<h:form>
+				<p:commandButton  value="Ajouter Rayon"  action="#{rayonController.clear()}"
+				    update=":addRayonForm"
+				 ></p:commandButton>
+			</h:form>
+
+
+			
+				<h:form id="addRayonForm">
+				   <p:messages/>
+                   <p:focus/>
+					<p:panelGrid columns="2">
+
+						<h:outputText value="Id:" />
+						<p:inputText value="#{rayonController.rayon.id}"></p:inputText>
+
+						<h:outputText value="Nom:" />
+						<p:inputText value="#{rayonController.rayon.nom}">
+
+						</p:inputText>
+                        <h:outputText value="Localisation:" />
+						<p:inputText value="#{rayonController.rayon.localisation}">
+
+						</p:inputText>
+						<h:outputText value="Chef de Rayon" />
+						<h:selectOneListbox  value="#{rayonController.utilisateur.id}">
+   			           <f:selectItems value="#{utilisateurController.lUtilisateur}" var="utilisateur"
+   			itemLabel="#{utilisateur.nom}" itemValue="#{utilisateur.id}" />
+   		      </h:selectOneListbox>
+						<p:commandButton value="Add"
+							action="#{rayonController.saveRayon()}"
+							update="addRayonForm, :rayonTable, :messages" />
+					</p:panelGrid>
+
+
+				</h:form>
+			
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

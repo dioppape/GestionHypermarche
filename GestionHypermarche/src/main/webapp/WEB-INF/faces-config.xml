@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+<!-- org.springframework.web.jsf.el.SpringBeanFacesELResolver.class-->
+	<application>
+	<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+<navigation-rule>
+<from-view-id>*</from-view-id>
+<navigation-case>
+<from-outcome>admin</from-outcome>
+<to-view-id>/view/admin.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>categorie</from-outcome>
+<to-view-id>/view/categorie.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>article</from-outcome>
+<to-view-id>/view/article.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>user</from-outcome>
+<to-view-id>/view/user.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>compte</from-outcome>
+<to-view-id>/view/compte.xhtml</to-view-id>
+</navigation-case>
+</navigation-rule>
+</faces-config>

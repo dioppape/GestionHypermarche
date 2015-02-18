@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="categorie" xmlns="categorie"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:Alias1="urn:schemas-microsoft-com:datatypes"
+xmlns:Alias2="rayon" >
+<xs:import namespace="rayon" schemaLocation="rayon.xsd"/>
+	<xs:element  name="categories" >
+	    <xs:complexType>
+    <xs:sequence>
+	<xs:element name="categorie" type="categorie"  minOccurs="1"  maxOccurs="unbounded"/>	
+	</xs:sequence>
+	</xs:complexType>
+	</xs:element>	
+	<xs:complexType name="categorie">
+			<xs:sequence>
+				<xs:element name="id" type="xs:ID" nillable="false" />
+				<xs:element name="type" type="xs:string" />
+				<xs:element name="rayon" type="Alias2:rayon" nillable="false" />
+			</xs:sequence>
+		</xs:complexType>
+</xs:schema>

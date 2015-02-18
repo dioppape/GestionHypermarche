@@ -7,17 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <form action="../GestionHypermarche/serveur/utilisateur" method="POST">
-  
-  <br/>
-  <label for="email">login</label>
-  <input name="email" />
-  <br/>
-
-  <label for="pwd">pwd</label>
-  <input name="pwd" />
-  <br/>
-  <input type="submit" value="Submit" />
-  </form>
+<h1>RequestMapping("/route")</h1>
 </body>
-</html> 
+</html>
