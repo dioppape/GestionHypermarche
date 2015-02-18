@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="../index.xhtml">
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content">
+		 <ui:insert name="menu" >
+					<ui:include src="/view/menu.xhtml">
+					</ui:include>
+	     </ui:insert>
+			<p:growl id="messages" />
+
+			<p:outputPanel id="categories">
+				<p:dataTable id="categorieTable" var="listcategorie"
+					value="#{categorieController.lCategorie}" width="300" border="1">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet>
+						<h:outputText value="#{listcategorie.id}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{listcategorie.type}" />
+					</p:column>					
+				
+					<p:column>
+					
+						<f:facet name="header">
+							<h:outputText value="Opération" />
+						</f:facet>
+						<h:form>
+							<p:commandButton value="Modifier"
+								action="#{categorieController.setCategorie(listcategorie)}"
+								update=":addcategorieForm" />
+							<p:commandButton value="Supprimer"
+								action="#{categorieController.deleteCategorie(listcategorie)}"
+								update=":categorieTable, :messages" />
+							<!--<p:confirm header="Confirmation"   message="Voulez vous vraiment supprimer" icon="ui-icon-alert"/> -->
+						<p:commandButton value="Detailles"
+								action="#{articleController.loadArticle(listcategorie)}"
+								update=":messages" />
+							
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<h:form>
+				<p:commandButton  value="Ajouter categorie"  action="#{categorieController.clear()}"
+				    update=":addcategorieForm"  ></p:commandButton>
+			</h:form>
+
+	<h:form id="addcategorieForm">
+				   <p:messages/>
+                   <p:focus/>
+					<p:panelGrid columns="2">
+
+						<h:outputText value="Id:" />
+						<p:inputText value="#{categorieController.categorie.id}"></p:inputText>
+
+						<h:outputText value="Nom:" />
+						<p:inputText value="#{categorieController.categorie.type}">
+
+						</p:inputText>
+						<h:outputText value="Rayon:" />
+                      
+   		<h:selectOneListbox  value="#{categorieController.rayon.id}">
+   			<f:selectItems value="#{rayonController.lrayon}" var="rayon"
+   			itemLabel="#{rayon.nom}" itemValue="#{rayon.id}" />
+   		</h:selectOneListbox>
+   		
+                        
+						<p:commandButton value="Add"
+							action="#{categorieController.saveCategorie()}"
+							update="addcategorieForm, :categorieTable, :messages" />
+					</p:panelGrid>
+
+
+				</h:form>
+			
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="hypermarche">
+    <xsd:complexType>
+    <xsd:sequence>
+	
+		<xsd:element name="utilisateur" type="utilisateur"
+			minOccurs="0" maxOccurs="unbounded">
+
+		</xsd:element>
+		<xsd:element name="rayon" type="rayon" minOccurs="0"
+			maxOccurs="unbounded">
+
+		</xsd:element>
+	
+</xsd:sequence></xsd:complexType>
+  </xsd:element>
+  <xsd:attribute name="nom" type="xsd:language" >
+	</xsd:attribute>
+	
+	<xsd:simpleType name="email">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[.-_][a-z][A-Z][0-9]+@[a-z][A-Z]+.[a-z][A-Z]" />
+			<xsd:minLength value="10"></xsd:minLength>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="role" abstract="false" mixed="false">
+		<xsd:attribute name="id" use="required" type="xsd:ID" >
+		</xsd:attribute>
+		<xsd:attribute name="nom" type="xsd:string" use="required">
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="utilisateur" abstract="false"
+		mixed="false">
+		<xsd:sequence>
+				
+			<xsd:element name="role" type="role" minOccurs="1"
+				maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:sequence>
+			<xsd:element name="rayon" type="rayon" minOccurs="1"
+				maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required" type="xsd:ID" />
+		<xsd:attribute name="nom" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="prenom" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="email" type="email" use="required"></xsd:attribute>
+		<xsd:attribute name="login" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="pwd" type="xsd:string" use="required">
+	   </xsd:attribute>
+	  <xsd:attribute name="tel" type="xsd:string" />
+       <xsd:attribute name="adresse" type="xsd:string" />
+        <xsd:attribute name="ville" type="xsd:string" />
+         <xsd:attribute name="codepostale" type="xsd:string" />
+         <xsd:attribute name="pays" type="xsd:string" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="article"  mixed="false">
+		<xsd:attribute name="codeBar" use="required" type="xsd:ID" />
+		<xsd:attribute name="libelle" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="prixachat" type="xsd:string">
+		</xsd:attribute>
+		<xsd:attribute name="prixvente" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="couleur" type="xsd:anySimpleType"
+			>
+		</xsd:attribute>
+
+	</xsd:complexType>
+
+	<xsd:complexType name="categorie" 
+		mixed="false">
+		<xsd:sequence>
+			<xsd:element name="article" type="article" minOccurs="1"
+				maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required" type="xsd:ID" />
+		<xsd:attribute name="type" type="xsd:string" use="required">
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="rayon"  mixed="false">
+		<xsd:sequence>
+			<xsd:element name="categorie" type="categorie"
+				minOccurs="1" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required" type="xsd:ID" >
+		</xsd:attribute>
+		<xsd:attribute name="nom" type="xsd:string" use="required">
+		</xsd:attribute>
+		<xsd:attribute name="localisation" type="xsd:string" >
+		</xsd:attribute>
+	</xsd:complexType>
+	
+		
+		
+	
+</xsd:schema>

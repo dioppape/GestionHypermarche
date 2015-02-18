@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="../index.xhtml">
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content">
+		 <ui:insert name="menu" >
+					<ui:include src="/view/menu.xhtml">
+					</ui:include>
+	     </ui:insert>
+			<p:growl id="messages" />
+
+			<p:outputPanel id="utilisateurs">
+				<p:dataTable id="utilisateurTable" var="listutilisateur"
+					value="#{utilisateurController.lUtilisateur}" width="300" border="1">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.id}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.nom}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Prenom" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.prenom}" />
+					</p:column>
+					
+					
+				   <p:column>
+						<f:facet name="header">
+							<h:outputText value="Tel" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.tel}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.email}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.adresse}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ville" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.ville}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Code postale" />
+						</f:facet>
+						<h:outputText value="#{listutilisateur.codepostale}" />
+					</p:column>
+					
+					
+					<p:column>
+					
+						<f:facet name="header">
+							<h:outputText value="Opération" />
+						</f:facet>
+						<h:form>
+							<p:commandButton value="Modifier"
+								action="#{utilisateurController.setUtilisateur(listutilisateur)}"
+								update=":addutilisateurForm" />
+							<p:commandButton value="Supprimer"
+								action="#{utilisateurController.deleteUtilisateur(listutilisateur)}"
+								update=":utilisateurTable, :messages" />
+							<!--<p:confirm header="Confirmation"   message="Voulez vous vraiment supprimer" icon="ui-icon-alert"/> -->
+						   <p:commandButton value="Role"
+								action="#{roleController.loadRole(listutilisateur)}"
+								update=":messages" />
+							
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<h:form>
+				<p:commandButton  value="Ajouter utilisateur"  action="#{utilisateurController.clear()}"
+				    update=":addutilisateurForm"  ></p:commandButton>
+			</h:form>
+
+
+				<h:form id="addutilisateurForm">
+				   <p:messages/>
+                   <p:focus/>
+					<p:panelGrid columns="2">
+
+						<h:outputText value="Id:" />
+						<p:inputText value="#{utilisateurController.utilisateur.id}"></p:inputText>
+
+						<h:outputText value="Nom:" />
+						<p:inputText value="#{utilisateurController.utilisateur.nom}">
+
+						</p:inputText>
+                        
+						<h:outputText value="Prenom:" />
+						<p:inputText value="#{utilisateurController.utilisateur.prenom}"></p:inputText>
+
+						<h:outputText value="Tel:" />
+						<p:inputText value="#{utilisateurController.utilisateur.tel}">
+
+						</p:inputText>
+                        <h:outputText value="Email:" />
+						<p:inputText value="#{utilisateurController.utilisateur.email}">
+
+						</p:inputText>
+						
+                        <h:outputText value="Mot de Passe:" />
+						<p:inputText value="#{utilisateurController.utilisateur.pwd}">
+
+						</p:inputText>
+						<h:outputText value="Adresse:" />
+						<p:inputText value="#{utilisateurController.utilisateur.adresse}"></p:inputText>
+
+						<h:outputText value="Ville:" />
+						<p:inputText value="#{utilisateurController.utilisateur.ville}">
+
+						</p:inputText>
+						<h:outputText value="Code Postale:" />
+						<p:inputText value="#{utilisateurController.utilisateur.codepostale}">
+
+						</p:inputText>
+						<h:outputText value="Pays:" />
+						<p:inputText value="#{utilisateurController.utilisateur.pays}">
+
+						</p:inputText>
+                       
+						<p:commandButton value="Add"
+							action="#{utilisateurController.saveUtilisateur()}"
+							update="addutilisateurForm, :utilisateurTable, :messages" />
+					</p:panelGrid>
+
+
+				</h:form>
+			
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

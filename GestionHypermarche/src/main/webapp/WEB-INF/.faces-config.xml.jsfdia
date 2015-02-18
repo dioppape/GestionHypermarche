@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="admin::#view#admin.xhtml" NAME="output"
+    PATH="/view/admin.xhtml" TARGET="rules:#view#admin.xhtml"
+    TITLE="admin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="categorie::#view#categorie.xhtml"
+    NAME="output1" PATH="/view/categorie.xhtml"
+    TARGET="rules:#view#categorie.xhtml" TITLE="categorie" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="article::#view#article.xhtml" NAME="output2"
+    PATH="/view/article.xhtml" TARGET="rules:#view#article.xhtml"
+    TITLE="article" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="user::#view#user.xhtml" NAME="output3"
+    PATH="/view/user.xhtml" TARGET="rules:#view#user.xhtml" TITLE="user" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="compte::#view#compte.xhtml" NAME="output4"
+    PATH="/view/compte.xhtml" TARGET="rules:#view#compte.xhtml"
+    TITLE="compte" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#view#categorie.xhtml"
+  PATH="/view/categorie.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#article.xhtml"
+  PATH="/view/article.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#user.xhtml" PATH="/view/user.xhtml"
+  SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#compte.xhtml" PATH="/view/compte.xhtml"
+  SHAPE="304,609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#admin.xhtml" PATH="/view/admin.xhtml"
+  SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -1,0 +1,55 @@
+
+ <html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets">  
+  
+    <h:body> 
+    <ui:composition template="../index.xhtml">
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content"> 
+     <h1 id="h1">Connexion</h1>
+  
+        <p:column>
+           
+            <p:graphicImage library="default" style="max-width:30px;max-height:30px;" name="css/Admin-icon.png" />
+                 </p:column>
+       
+	<h:form id="loginForm">
+		<p:panel header="Votre email et mot de passe svp!">
+            
+			<h:panelGrid columns="2">
+
+				<h:outputText value="Email:" />
+				<p:inputText id="username" value="#{utilisateurController.utilisateur.email}">
+				</p:inputText>
+
+				<h:outputText value="Mot de Passe:" />
+				<p:password id="password" value="#{utilisateurController.utilisateur.pwd}">
+
+				</p:password>
+
+				<p:commandButton id="loginButton" value="Connexion"
+					action="#{utilisateurController.login()}"></p:commandButton>
+			</h:panelGrid>
+		</p:panel>
+		
+      <p:dialog id="result" modal="true" width="700" header="Results" 
+			widgetVar="finalDialog" closable="true" resizable="no">
+
+			<h:outputText
+				value="Login #{utilisateurController.utilisateur.email} ou mot de passe incorrect" />
+
+			
+
+
+		</p:dialog>
+	</h:form>
+</ui:define>
+
+	</ui:composition>
+    </h:body> 
+   
+</html>  

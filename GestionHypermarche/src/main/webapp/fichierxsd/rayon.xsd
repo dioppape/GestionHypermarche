@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="rayon" xmlns="rayon"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:Alias1="urn:schemas-microsoft-com:datatypes"
+xmlns:Alias2="utilisateur" >
+<xs:import namespace="utilisateur" schemaLocation="utilisateur.xsd"/>
+	<xs:element  name="rayons" >
+	    <xs:complexType>
+    <xs:sequence>
+	<xs:element name="rayon" type="rayon"  minOccurs="1"  maxOccurs="unbounded"/>	
+	</xs:sequence>
+	</xs:complexType>
+	</xs:element>	
+	<xs:complexType name="rayon">
+			<xs:sequence>
+				<xs:element name="id" type="xs:ID" nillable="false" />
+				<xs:element name="nom" type="xs:string" />
+				<xs:element name="localisation" type="xs:string" />
+				<xs:element name="utilisateur" type="Alias2:utilisateur" nillable="false" />
+			</xs:sequence>
+		</xs:complexType>
+</xs:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema targetNamespace="stock" xmlns="stock"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:Alias2="lignedecommande">
+	<xs:import namespace="lignedecommande" schemaLocation="lignedecommande.xsd" />
+	<xs:element name="stocks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="stock" type="stock" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="stock">
+		<xs:sequence>
+			<xs:element name="codebar" type="xs:ID" nillable="false"/>
+			<xs:element name="libelle" type="xs:string" nillable="false"/>
+			<xs:element name="prixachat" type="xs:string" />
+			<xs:element name="prixvente" type="xs:string" />
+			<xs:element name="quantite" type="xs:string" />
+			<xs:element name="lignedecommande" type="Alias2:lignedecommande" nillable="true" />
+			
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

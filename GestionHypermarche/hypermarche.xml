@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hypermarche>
+    <utilisateur id="45" nom="Diop" prenom="Pape" email="diopref" pwd="diop2011" tel="0782349634" adresse="ch 625 Résidence Évariste Galois Chemins des Rouliers" ville="Reims" codepostale="51100" pays="France">
+        <Role id="1" nom="USER"/>
+    </utilisateur>
+    
+</hypermarche>

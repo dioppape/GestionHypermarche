@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="../index.xhtml">
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content">
+		<ui:insert name="menu" >
+					<ui:include src="/view/menu.xhtml">
+					</ui:include>
+	     </ui:insert>
+			<p:growl id="messages" />
+
+			<p:outputPanel id="articles">
+				<p:dataTable id="articleTable" var="listarticle"
+					value="#{articleController.lArticle}" width="300" border="1">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet>
+						<h:outputText value="#{listarticle.codebar}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{listarticle.libelle}" />
+					</p:column>					
+				    <p:column>
+						<f:facet name="header">
+							<h:outputText value="Prix d'Achat" />
+						</f:facet>
+						<h:outputText value="#{listarticle.prixachat}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Prix de Vente" />
+						</f:facet>
+						<h:outputText value="#{listarticle.prixvente}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Quantité" />
+						</f:facet>
+						<h:outputText value="#{listarticle.quantite}" />
+					</p:column>
+					
+					<p:column>
+					
+						<f:facet name="header">
+							<h:outputText value="Opération" />
+						</f:facet>
+						<h:form>
+							<p:commandButton value="Modifier"
+								action="#{articleController.setArticle(listarticle)}"
+								update=":addarticleForm" />
+							<p:commandButton value="Supprimer"
+								action="#{articleController.deleteArticle(listarticle)}"
+								update=":articleTable, :messages" />
+							<!--<p:confirm header="Confirmation"   message="Voulez vous vraiment supprimer" icon="ui-icon-alert"/> -->
+						
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<h:form>
+				<p:commandButton  value="Ajouter article"  action="#{articleController.clear()}"
+				    update=":addarticleForm"  ></p:commandButton>
+			</h:form>
+
+
+				<h:form id="addarticleForm">
+				   <p:messages/>
+                   <p:focus/>
+					<p:panelGrid columns="2">
+
+						<h:outputText value="Id:" />
+						<p:inputText value="#{articleController.article.codebar}"/>
+						<h:outputText value="Libelle:" />
+						<p:inputText value="#{articleController.article.libelle}"/>
+						<h:outputText value="Prix De vente:" />
+						<p:inputText value="#{articleController.article.prixvente}"/>
+						<h:outputText value="Prix d'Achat:" />
+						<p:inputText value="#{articleController.article.prixachat}"/>
+						<h:outputText value="Quantite:" />
+						<p:inputText value="#{articleController.article.quantite}"/>
+						
+						<h:outputText value="Categorie" />
+						<h:selectOneListbox  value="#{articleController.categorie.id}">
+   			           <f:selectItems value="#{categorieController.lCategorie}" var="categorie"
+   			itemLabel="#{categorie.type}" itemValue="#{categorie.id}" />
+   		      </h:selectOneListbox>
+						
+                 <!--     
+   		
+   		
+        <p:selectOneListbox value="" label="ldkd"></p:selectOneListbox>  <p:pickList addLabel="#{rayonController.listRayon()}"></p:pickList>-->
+                        
+						<p:commandButton value="Ajouter"
+							action="#{articleController.saveArticle()}"
+							update="addarticleForm, :articleTable, :messages" />
+					</p:panelGrid>
+
+
+				</h:form>
+			
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>
