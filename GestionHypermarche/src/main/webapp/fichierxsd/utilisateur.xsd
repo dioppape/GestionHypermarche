@@ -27,7 +27,6 @@
 		</xs:complexType>
 		<xs:complexType name="role">
 			<xs:sequence>
-				<xs:element name="id" type="xs:ID" nillable="false" />
 				<xs:element name="nom" type="xs:string" nillable="false" />
 				
 			</xs:sequence>

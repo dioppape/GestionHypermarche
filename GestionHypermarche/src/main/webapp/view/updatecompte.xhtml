@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="../index.xhtml">
+
+		<!-- Redefinition de la zone 'content' du layout  	-->
+		<ui:define name="content">
+		 <ui:insert name="menu" >
+					<ui:include src="/view/menu.xhtml">
+					</ui:include>
+	     </ui:insert>
+			<p:growl id="messages" />
+
+		
+				
+
+				<h:form id="addutilisateurForm">
+				   <p:messages/>
+                   <p:focus/>
+					<p:panelGrid columns="2">
+
+						<h:outputText value="Id:" />
+						<p:inputText value="#{utilisateurController.utilisateur.id}"></p:inputText>
+
+						<h:outputText value="Nom:" />
+						<p:inputText value="#{utilisateurController.utilisateur.nom}">
+
+						</p:inputText>
+                        
+						<h:outputText value="Prenom:" />
+						<p:inputText value="#{utilisateurController.utilisateur.prenom}"></p:inputText>
+
+						<h:outputText value="Tel:" />
+						<p:inputText value="#{utilisateurController.utilisateur.tel}">
+
+						</p:inputText>
+                        <h:outputText value="Email:" />
+						<p:inputText value="#{utilisateurController.utilisateur.email}">
+
+						</p:inputText>
+						
+                        <h:outputText value="Mot de Passe:" />
+						<p:inputText value="#{utilisateurController.utilisateur.pwd}">
+
+						</p:inputText>
+						<h:outputText value="Adresse:" />
+						<p:inputText value="#{utilisateurController.utilisateur.adresse}"></p:inputText>
+
+						<h:outputText value="Ville:" />
+						<p:inputText value="#{utilisateurController.utilisateur.ville}">
+
+						</p:inputText>
+						<h:outputText value="Code Postale:" />
+						<p:inputText value="#{utilisateurController.utilisateur.codepostale}">
+
+						</p:inputText>
+						<h:outputText value="Pays:" />
+						<p:inputText value="#{utilisateurController.utilisateur.pays}">
+
+						</p:inputText>
+                       
+						<p:commandButton value="Add"
+							action="#{utilisateurController.saveUtilisateur()}"
+							update="addutilisateurForm, :messages" />
+					</p:panelGrid>
+</h:form>
+	</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

@@ -28,7 +28,7 @@ public class Test {
 		user.setPwd("0000");
 		
 		Role role=new Role();
-		role.setId("100");
+		
 		role.setNom("ADMIN");
 		
 	

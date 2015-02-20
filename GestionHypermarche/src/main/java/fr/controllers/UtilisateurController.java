@@ -2,7 +2,6 @@ package fr.controllers;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -58,9 +57,9 @@ public String login() {
 		return "admin";
 		}
 		else{
-			System.out.println("fin dialog");
-		RequestContext.getCurrentInstance().execute(
-				"PF('finalDialog').show();");
+			FacesContext.getCurrentInstance().addMessage
+			(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Utilisateur inexistant",null));
+		
 			return null;
 		}
 }

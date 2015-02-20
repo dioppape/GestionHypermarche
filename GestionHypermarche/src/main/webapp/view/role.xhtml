@@ -24,15 +24,10 @@
 			<p:outputPanel id="roles">
 				<p:dataTable id="roleTable" var="listrole"
 					value="#{roleController.lRole}" width="300" border="1">
+					
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="ID" />
-						</f:facet>
-						<h:outputText value="#{listrole.id}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Nom" />
+							<h:outputText value="Role" />
 						</f:facet>
 						<h:outputText value="#{listrole.nom}" />
 					</p:column>					
@@ -56,10 +51,7 @@
 					</p:column>
 				</p:dataTable>
 			</p:outputPanel>
-			<h:form>
-				<p:commandButton  value="Ajouter role"  action="#{roleController.clear()}"
-				    update=":addroleForm"></p:commandButton>
-			</h:form>
+			
 
 
 			
@@ -68,13 +60,14 @@
                    <p:focus/>
 					<p:panelGrid columns="2">
 
-						<h:outputText value="Id:" />
-						<p:inputText value="#{roleController.role.id}"></p:inputText>
-
-						<h:outputText value="Nom:" />
-						<p:inputText value="#{roleController.role.nom}">
-
-						</p:inputText>
+						
+						<h:outputText value="Role:" />
+						<h:selectOneRadio value="#{roleController.role.nom}">
+                        <f:selectItem itemLabel="ADMIN" itemValue="ADMIN"/>
+                        <f:selectItem itemLabel="CAISSIER" itemValue="CAISSIER"/>
+                        <f:selectItem  itemLabel="CHEFRAYON" itemValue="CHEFRAYON" />
+   		                  </h:selectOneRadio>
+						
 						<h:outputText value="Utilisateur:" />
                       
    		<h:selectOneListbox  value="#{roleController.utilisateur.id}">

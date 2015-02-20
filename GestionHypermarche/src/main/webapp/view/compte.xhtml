@@ -11,7 +11,7 @@
 		<!-- Redefinition de la zone 'content' du layout  	-->
 		<ui:define name="content"> 
      <h1 id="h1">Connexion</h1>
-  
+  	<p:growl id="messages" />
         <p:column>
            
             <p:graphicImage library="default" style="max-width:30px;max-height:30px;" name="css/Admin-icon.png" />
@@ -36,16 +36,7 @@
 			</h:panelGrid>
 		</p:panel>
 		
-      <p:dialog id="result" modal="true" width="700" header="Results" 
-			widgetVar="finalDialog" closable="true" resizable="no">
-
-			<h:outputText
-				value="Login #{utilisateurController.utilisateur.email} ou mot de passe incorrect" />
-
-			
-
-
-		</p:dialog>
+     
 	</h:form>
 </ui:define>
 

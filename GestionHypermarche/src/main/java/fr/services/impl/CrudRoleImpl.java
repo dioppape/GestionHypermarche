@@ -67,10 +67,10 @@ public class CrudRoleImpl implements CrudRole {
 			int i=0;
 			while(i<list.size()){
 
-				if(list.get(i).getId().equals(role.getId())){
+				if(list.get(i).getNom().equals(role.getNom())){
 					//list.get(i).setId(rayon.getId());
 					list.set(i, role);
-					result="Categorie id "+list.get(i).getId()+" updated";
+					result="Categorie id "+list.get(i).getNom()+" updated";
 					 existe= true;
 				}
 				i++;
@@ -106,7 +106,7 @@ public class CrudRoleImpl implements CrudRole {
 				List<Role> lrole = list.get(i).getRole();
 				int j=0;
 				while(j<lrole.size()){
-				if(lrole.get(j).getId().equals(role.getId())){
+				if(lrole.get(j).getNom().equals(role.getNom())){
 					lrole.remove(j);
 					}	
 				j++;

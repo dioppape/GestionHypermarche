@@ -20,71 +20,56 @@
 					</ui:include>
 	     </ui:insert>
 			<p:growl id="messages" />
-
-			<p:outputPanel id="utilisateurs">
-				<p:dataTable id="utilisateurTable" var="listutilisateur"
-					value="#{utilisateurController.getProfil()}" width="300" border="1">
-					<p:column>
-						<f:facet name="header">
+			
+				<p:panelGrid id="utilisateurTable" var="listutilisateur"
+					value="#{utilisateurController.getProfil()}"  border="1" columns="2">
+				
 							<h:outputText value="ID" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.id}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+						
+						<h:outputText value="#{utilisateurController.utilisateur.id}" />
+					
+						
 							<h:outputText value="Nom" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.nom}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+						
+						<h:outputText value="#{utilisateurController.utilisateur.nom}" />
+					
+						
 							<h:outputText value="Prenom" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.prenom}" />
-					</p:column>
+					
+						<h:outputText value="#{utilisateurController.utilisateur.prenom}" />
 					
 					
-				   <p:column>
-						<f:facet name="header">
 							<h:outputText value="Tel" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.tel}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+					
+						<h:outputText value="#{utilisateurController.utilisateur.tel}" />
+					
+						
 							<h:outputText value="Email" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.email}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+						
+						<h:outputText value="#{utilisateurController.utilisateur.email}" />
+					
+						
 							<h:outputText value="Adresse" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.adresse}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+						
+						<h:outputText value="#{utilisateurController.utilisateur.adresse}" />
+					
+				
 							<h:outputText value="Ville" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.ville}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">
+						
+						<h:outputText value="#{utilisateurController.utilisateur.ville}" />
+					
 							<h:outputText value="Code postale" />
-						</f:facet>
-						<h:outputText value="#{listutilisateur.codepostale}" />
-					</p:column>
+					
+						<h:outputText value="#{utilisateurController.utilisateur.codepostale}" />
 					
 					
-					<p:column>
-					
-						<f:facet name="header">
+						
 							<h:outputText value="Opération" />
-						</f:facet>
+					
 						<h:form>
 							<p:commandButton value="Modifier"
-								action="#{utilisateurController.setUtilisateur(listutilisateur)}"
-								update=":addutilisateurForm" />
+								action="updatecompte"
+								 />
 							<p:commandButton value="Supprimer"
 								action="#{utilisateurController.deleteUtilisateur(listutilisateur)}"
 								update=":utilisateurTable, :messages" />
@@ -94,68 +79,12 @@
 								update=":messages" />
 							
 						</h:form>
-					</p:column>
-				</p:dataTable>
-			</p:outputPanel>
-			<h:form>
-				<p:commandButton  value="Ajouter utilisateur"  action="#{utilisateurController.clear()}"
-				    update=":addutilisateurForm"  ></p:commandButton>
-			</h:form>
-
-
-				<h:form id="addutilisateurForm">
-				   <p:messages/>
-                   <p:focus/>
-					<p:panelGrid columns="2">
-
-						<h:outputText value="Id:" />
-						<p:inputText value="#{utilisateurController.utilisateur.id}"></p:inputText>
-
-						<h:outputText value="Nom:" />
-						<p:inputText value="#{utilisateurController.utilisateur.nom}">
-
-						</p:inputText>
-                        
-						<h:outputText value="Prenom:" />
-						<p:inputText value="#{utilisateurController.utilisateur.prenom}"></p:inputText>
-
-						<h:outputText value="Tel:" />
-						<p:inputText value="#{utilisateurController.utilisateur.tel}">
-
-						</p:inputText>
-                        <h:outputText value="Email:" />
-						<p:inputText value="#{utilisateurController.utilisateur.email}">
-
-						</p:inputText>
-						
-                        <h:outputText value="Mot de Passe:" />
-						<p:inputText value="#{utilisateurController.utilisateur.pwd}">
-
-						</p:inputText>
-						<h:outputText value="Adresse:" />
-						<p:inputText value="#{utilisateurController.utilisateur.adresse}"></p:inputText>
-
-						<h:outputText value="Ville:" />
-						<p:inputText value="#{utilisateurController.utilisateur.ville}">
-
-						</p:inputText>
-						<h:outputText value="Code Postale:" />
-						<p:inputText value="#{utilisateurController.utilisateur.codepostale}">
-
-						</p:inputText>
-						<h:outputText value="Pays:" />
-						<p:inputText value="#{utilisateurController.utilisateur.pays}">
-
-						</p:inputText>
-                       
-						<p:commandButton value="Add"
-							action="#{utilisateurController.saveUtilisateur()}"
-							update="addutilisateurForm, :utilisateurTable, :messages" />
-					</p:panelGrid>
-
-
-				</h:form>
+				
+				</p:panelGrid>
+		
 			
+
+				
 		</ui:define>
 
 	</ui:composition>

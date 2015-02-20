@@ -3,8 +3,10 @@ package fr.beans;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.stereotype.Controller;
@@ -44,35 +46,15 @@ public class LoginBean implements Serializable {
 
 	public String login() {
 		guser=new CrudUtilisateurImpl();
-		/*user.setNom("Diop");
-		user.setPrenom("Pape");
-		user.setId("001");
-		user.setEmail("diopref@gmail.com");
-		user.setTel("0619462854");
-		user.setLogin("diopref");
-		user.setPwd("00000");
-		Adresse adrese = new Adresse();
-		adrese.setCodePostal(51100);
-		adrese.setVille("Reims");
-		adrese.setNomDeRue("ch roulier");
-		adrese.setNumeroDeRue(1);
-		adrese.setId("00001");
-		Role role=new Role();
-		role.setId("100");
-		role.setNom("ADMIN");
-		user.setAdresse(adrese);
-		user.getRole().add(role);
 		
-			System.out.println(guser.addUtilisateur(user));*/
 			user=guser.getUtilisateurByLoginPwd(getUsername(), getPassword());
 			if(user!=null){			
 			System.out.println("connexion"+password);
 			return "admin";
 			}
 			else{
-				System.out.println("fin dialog");
-			RequestContext.getCurrentInstance().execute(
-					"PF('finalDialog').show();");
+				FacesContext.getCurrentInstance().addMessage
+				(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Utilisateur inexistant",null));
 				return null;
 			}
 			

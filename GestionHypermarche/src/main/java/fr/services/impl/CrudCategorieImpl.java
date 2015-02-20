@@ -23,7 +23,6 @@ import org.xml.sax.SAXException;
 
 import fr.models.*;
 import fr.services.CrudCategorie;
-import fr.services.CrudRayon;
 @Service
 public class CrudCategorieImpl implements CrudCategorie {
 	@Autowired

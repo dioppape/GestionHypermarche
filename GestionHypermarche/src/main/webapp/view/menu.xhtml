@@ -36,9 +36,9 @@
     <p:menu overlay="true" trigger="triggerButton3" my="right top" at="right top">
       
         <p:submenu label="Compte">
-            <p:menuitem value="Modifier" action="profil"></p:menuitem>
-            <p:menuitem value="Suppimer" action="profil"></p:menuitem>
            
+            <p:menuitem value="Voir profil" action="profil"></p:menuitem>
+            <p:menuitem value="Modifier" action="updateprofil"></p:menuitem>
         </p:submenu>
     </p:menu>
     <p:commandButton id="triggerButton3" value="Mon Compte"></p:commandButton>
@@ -52,7 +52,9 @@
         </p:submenu>
     </p:menu>
     <p:commandButton id="triggerButton4" value="Autre"></p:commandButton>
-</h:form>
+
+<p:commandButton action="#{utilisateurController.deconnecter()}" style="font-size:11px; margin-left:9px; color: blue;" value="Déconnexion"></p:commandButton>
+		</h:form>
 <br/><br/>
 <br/>
 </h:body>
